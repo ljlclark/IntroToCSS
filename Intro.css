@@ -1,0 +1,17 @@
+/* Intro.css */
+
+#title {
+  background: lightsteelblue;
+}
+
+.navigation {
+  background: lightsteelblue;
+}
+
+.button {
+  display: inline-block;
+  background: lightsteelblue;
+  border-radius: 4px;
+  padding: 5px;
+  text-decoration: none;
+}
