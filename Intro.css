@@ -15,3 +15,12 @@
   padding: 5px;
   text-decoration: none;
 }
+
+div.PathText {
+  color: #003399;
+  font-family: Verdana, Tahoma, Arial, Sans-Serif;
+  font-size: 9pt;
+  padding-left: 10px;
+  padding-top: 5px;
+}
+
