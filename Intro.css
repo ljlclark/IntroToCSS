@@ -1,6 +1,6 @@
 /* Intro.css */
 
-#title {
+#pageTitle {
   background: lightsteelblue;
 }
 
@@ -8,10 +8,17 @@
   background: lightsteelblue;
 }
 
-.button {
+.demo {
+  background: lightsteelblue;
   display: inline-block;
+  overflow: auto;
+  vertical-align: top;
+}
+
+.button {
   background: lightsteelblue;
   border-radius: 3px;
+  display: inline-block;
   padding: 5px 5px 5px 5px;
   text-decoration: none;
 }
