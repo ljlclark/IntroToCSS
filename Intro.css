@@ -4,12 +4,12 @@ body {
   background: aliceblue;
 }
 
-#pageTitle {
+.button {
+  display: inline-block;
   background: lightsteelblue;
-}
-
-.navigation {
-  background: lightsteelblue;
+  border-radius: 3px;
+  padding: 5px 5px 5px 5px;
+  text-decoration: none;
 }
 
 .demo {
@@ -19,15 +19,16 @@ body {
   vertical-align: top;
 }
 
-.button {
+.navigation {
   background: lightsteelblue;
-  border-radius: 3px;
-  display: inline-block;
-  padding: 5px 5px 5px 5px;
-  text-decoration: none;
 }
 
-div.PathText {
+.page {
+  margin-left: 15px;
+  margin-right: 10px;
+}
+
+.PathText {
   color: #003399;
   font-family: Verdana, Tahoma, Arial, Sans-Serif;
   font-size: 9pt;
@@ -39,3 +40,6 @@ div.PathText {
   background-color: #85C1E9;
 }
 
+#pageTitle {
+  background: lightsteelblue;
+}
