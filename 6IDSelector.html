@@ -7,6 +7,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width initial-scale=1" />
   <link rel='stylesheet' type='text/css' href='Intro.css' />
+  <script src="Intro.js"></script>
   <style>
     #pageTitle {
       background: lightsteelblue;
@@ -24,7 +25,7 @@
 <body>
   <div class="page">
     <div class="PathText">
-      / <a href="index.html">Home</a>
+      / <a id="home" href="index.html">Home</a>
       / IDSelector
     </div>
     <h3 id="pageTitle">The ID Selector</h3>
@@ -57,5 +58,8 @@
     <a href="7ExternalCSS.html" class="button">ExternalCSS -&gt;</a>
     <h6>6IDSelector</h6>
   </div>
+  <script>
+    LJCIsLocal();
+  </script>
 </body>
 </html>
