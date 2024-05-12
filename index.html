@@ -10,9 +10,9 @@
   <meta name="keywords" content="LJC, CSS, Tutorial, Simple, GitHub">
   <meta name="author" content="Lester J. Clark" />
   <meta name="viewport" content="width=device-width initial-scale=1" />
-  <link rel="stylesheet" type="text/css" href="CSS/Sidebar.css" />
-  <link rel="stylesheet" type="text/css" href="CSS/Intro.css" />
-  <script src="Script/CSSNavEvents.js"></script>
+  <link rel="stylesheet" type="text/css" href="CSS\Intro.css" />
+  <link rel="stylesheet" type="text/css" href="CSS\Sidebar.css" />
+  <script src="Script/NavEvents.js"></script>
 </head>
 <body>
   <!-- Show/Hide Menu Icon -->
@@ -77,7 +77,7 @@
   </div>
   <script>
     const contentFrame = document.getElementById("contentFrame");
-    const navEvents = new CSSNavEvents(contentFrame);
+    const navEvents = new NavEvents(contentFrame);
     navEvents.AddEvents();
   </script>
 </body>
