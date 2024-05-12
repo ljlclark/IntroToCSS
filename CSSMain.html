@@ -17,6 +17,12 @@
       text-align: center;
     }
   </style>
+  <script>
+    function HREF(url)
+    {
+      parent.parent.location.href = url;
+    }
+  </script>
 </head>
 <body>
   <div class="page">
@@ -37,15 +43,15 @@
     </p>
     <h3 style="background: lightsteelblue; text-align: center">Other Simple and Brief Tutorials</h3>
     <div style="text-align: center"
-         onclick="parent.parent.location.href ='https://ljlclark.github.io/IntroToHTML/'">
+         onclick="HREF('https://ljlclark.github.io/IntroToHTML/')">
       Intro to HTML5 Tutorial
     </div>
     <div style="text-align: center"
-         onclick="parent.parent.location.href='https://ljlclark.github.io/IntroToJavascript/'">
+         onclick="HREF('https://ljlclark.github.io/IntroToJavascript/')">
       Intro to Javascript Tutorial
     </div>
     <div style="text-align: center"
-         onclick="parent.parent.location.href='https://ljlclark.github.io/IntroToPHP/'">
+         onclick="HREF('https://ljlclark.github.io/IntroToPHP/')">
       Intro to PHP Tutorial
     </div>
     </p>
