@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!-- Copyright(c) Lester J. Clark and Contributors. -->
 <!-- Licensed under the MIT License.-->
-<!-- IntroToCSS/index.html -->
+<!-- IntroToCSS/CSSMain.html -->
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <title>Intro to CSS Tutorial</title>
@@ -9,53 +9,79 @@
   <meta name="keywords" content="LJC, CSS, Tutorial, Simple">
   <meta name='author' content='Lester J. Clark' />
   <meta name='viewport' content='width=device-width initial-scale=1' />
-  <link rel='stylesheet' type='text/css' href='CSS\Intro.css' />
+  <link rel='stylesheet' type='text/css' href='CSS/Intro.css' />
   <style>
     .banner {
-      background: #1798B7;
+      background: #23a2c2;
       height: 60px;
       text-align: center;
     }
+
+    .picture {
+      background: #1798B7;
+      height: auto;
+      max-width: 100%;
+    }
   </style>
   <script>
-    function HREF(url)
+    function HREF(wwwURL, localURL)
     {
+      const isLocal = localStorage.getItem("isLocal");
+      let url = wwwURL;
+      if (isLocal)
+      {
+        url = localURL
+      }
       parent.parent.location.href = url;
     }
   </script>
 </head>
 <body>
   <div class="page">
-    <h3 class="banner"><br />Simple and Brief</h3>
+    <img id="ZNNHS" src="../finaltransparent.png"
+         class="picture" />
+    <h3 id="Banner" class="banner"><br />Simple and Brief</h3>
     <h3 id="pageTitle" style="text-align: center">Intro to CSS Tutorial</h3>
     <p style="text-align: center">
-      <a href="HTML\1DeprecatedItems.html">Deprecated Presentation Elements and Attributes</a><br />
-      <a href="HTML\2StyleAttribute.html">The Style Attribute</a><br />
-      <a href="HTML\3StyleElement.html">The Style Element</a><br />
-      <a href="HTML\4ElementSelector.html">The Element Selector</a><br />
-      <a href="HTML\5ClassSelector.html">The Class Selector</a><br />
-      <a href="HTML\6IDSelector.html">The ID Selector</a><br />
-      <a href="HTML\7ExternalCSS.html">External CSS</a><br />
-      <a href="HTML\8ShowExtCSS.html">View External CSS</a><br />
-      <a href="HTML\9Block.html">Block Display Elements</a><br />
-      <a href="HTML\10Inline.html">Inline Display Elements</a><br />
-      <a href="HTML\11InlineBlock.html">Inline-Block Display Elements</a><br />
+      <a href="HTML/1DeprecatedItems.html">Deprecated Presentation Elements and Attributes</a><br />
+      <a href="HTML/2StyleAttribute.html">The Style Attribute</a><br />
+      <a href="HTML/3StyleElement.html">The Style Element</a><br />
+      <a href="HTML/4ElementSelector.html">The Element Selector</a><br />
+      <a href="HTML/5ClassSelector.html">The Class Selector</a><br />
+      <a href="HTML/6IDSelector.html">The ID Selector</a><br />
+      <a href="HTML/7ExternalCSS.html">External CSS</a><br />
+      <a href="HTML/8ShowExtCSS.html">View External CSS</a><br />
+      <a href="HTML/9Block.html">Block Display Elements</a><br />
+      <a href="HTML/10Inline.html">Inline Display Elements</a><br />
+      <a href="HTML/11InlineBlock.html">Inline-Block Display Elements</a><br />
     </p>
     <h3 style="background: lightsteelblue; text-align: center">Other Simple and Brief Tutorials</h3>
-    <div style="text-align: center"
-         onclick="HREF('https://ljlclark.github.io/IntroToHTML/')">
-      Intro to HTML5 Tutorial
-    </div>
-    <div style="text-align: center"
-         onclick="HREF('https://ljlclark.github.io/IntroToJavascript/')">
-      Intro to Javascript Tutorial
-    </div>
-    <div style="text-align: center"
-         onclick="HREF('https://ljlclark.github.io/IntroToPHP/')">
-      Intro to PHP Tutorial
-    </div>
+    <p style="text-align: center">
+      <span onclick="HREF('https://ljlclark.github.io/IntroToHTML/'
+              , '../IntroToHTML/WebSite/indexLocal.html')">
+        Intro to HTML5 Tutorial
+      </span><br />
+      <span onclick="HREF('https://ljlclark.github.io/IntroToJavascript/'
+              , '../IntroToJavascript/indexLocal.html')">
+        Intro to Javascript Tutorial
+      </span><br />
+      <span onclick="HREF('https://ljlclark.github.io/IntroToPHP/'
+              , '../IntroToPHP/index.htmlLocal')">
+        Intro to PHP Tutorial
+      </span><br />
     </p>
-    <h6>index</h6>
+    <h6>CSSMain</h6>
   </div>
+  <script>
+    const isLocal = localStorage.getItem("isLocal");
+    if (isLocal)
+    {
+      Banner.style.display = "none";
+    }
+    else
+    {
+      ZNNHS.style.display = "none";
+    }
+  </script>
 </body>
 </html>
