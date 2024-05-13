@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!-- Copyright(c) Lester J. Clark and Contributors. -->
+<!-- Licensed under the MIT License.-->
+<!-- IntroToCSS/Index.html -->
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Intro to CSS Tutorial</title>
+  <meta charset="utf-8" />
+  <meta name="description" content="LJC C# CodeDoc">
+  <meta name="keywords" content="LJC, CSS, Tutorial, Simple, GitHub">
+  <meta name="author" content="Lester J. Clark" />
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <link rel="stylesheet" type="text/css" href="CSS\Intro.css" />
+  <link rel="stylesheet" type="text/css" href="CSS\Sidebar.css" />
+  <script src="Script/NavEvents.js"></script>
+</head>
+<body>
+  <!-- Show/Hide Menu Icon -->
+  <span id="menubar"><img id="menuIco" src="AppManager.ico" /></span>
+  <div id="sidebar">
+    <br />
+    <div class="navItem" data-href="CSSMain.html">
+      Home
+    </div>
+    <div class="navItem"
+         data-href="HTML\1DeprecatedItems.html">
+      Deprecated Presentation Items
+    </div>
+    <div class="navItem"
+         data-href="HTML\2StyleAttribute.html">
+      The Style Attribute
+    </div>
+    <div class="navItem"
+         data-href="HTML\3StyleElement.html">
+      The Style Element
+    </div>
+    <div class="navItem"
+         data-href="HTML\4ElementSelector.html">
+      The Element Selector
+    </div>
+    <div class="navItem"
+         data-href="HTML\5ClassSelector.html">
+      The Class Selector
+    </div>
+    <div class="navItem"
+         data-href="HTML\6IDSelector.html">
+      The ID Selector
+    </div>
+    <div class="navItem"
+         data-href="HTML\7ExternalCSS.html">
+      External CSS
+    </div>
+    <div class="navItem"
+         data-href="HTML\8ShowExtCSS.html">
+      View External CSS
+    </div>
+    <div class="navItem"
+         data-href="HTML\9Block.html">
+      Block Display Elements
+    </div>
+    <div class="navItem"
+         data-href="HTML\10Inline.html">
+      Inline Display Elements
+    </div>
+    <div class="navItem"
+         data-href="HTML\11InlineBlock.html">
+      Inline-Block Display Elements
+    </div>
+    <br />
+    <div class="smallText">
+      Copyright &copy Lester J. Clark and Contributors.<br />
+      Licensed under the MIT License.
+    </div>
+  </div>
+  <div id="content">
+    <iframe id="contentFrame" src="CSSMain.html"></iframe>
+  </div>
+  <script>
+    localStorage.setItem("isLocal", "local");
+    const contentFrame = document.getElementById("contentFrame");
+    const navEvents = new NavEvents(contentFrame);
+    navEvents.AddEvents();
+  </script>
+</body>
+</html>
