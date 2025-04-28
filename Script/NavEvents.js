@@ -4,103 +4,175 @@
 class NavEvents
 {
   // Initializes an object instance with the provided values.
-  constructor(contentFrame)
+  constructor()
   {
-    this.ContentFrame = contentFrame;
+    // Create the class properties.
     this.PrevNavItem = null;
   }
 
   // Adds the HTML event handlers.
   AddEvents()
   {
-    // Event Handlers.
+    // Get frame document.
+    let frameDoc = null;
+    let frameWindow = contentFrame.contentWindow;
+    if (frameWindow.document)
+    {
+      frameDoc = frameWindow.document;
+    }
+    frameDoc = contentFrame.contentDocument;
+
+    // Link Event Handlers
+    if (frameDoc != null)
+    {
+      let links = frameDoc.getElementsByTagName("A");
+      for (let index = 0; index < links.length; index++)
+      {
+        let eChild = children[index];
+        if ("A" == eChild.tagName)
+        {
+          child.addEventListener("click", this.DocumentClick.bind(this));
+        }
+      }
+    }
+    //const links = this.content.querySelectorAll('a');
+    //links.forEach(link =>
+    //{
+    //  link.addEventListener('click', this.DocumentClick.bind(this));
+    //});
+
+    // Other Event Handlers.
     window.addEventListener("resize", this.WindowResize.bind(this))
     document.addEventListener("click", this.DocumentClick.bind(this));
     menuIco.addEventListener("click", this.MenuClick.bind(this));
     content.addEventListener("mouseenter", this.ContentMouseEnter.bind(this));
 
-    this.menubar = document.getElementById("menubar");
-    this.menuIco = document.getElementById("menuIco");
-    this.sidebar = document.getElementById("sidebar");
-    this.content = document.getElementById("content");
-    this.menubar.style.display = "none";
-    this.menuIco.style.display = "none";
+    // Set defaults.
+    menubar.style.display = "none";
+    menuIco.style.display = "none";
     this.reducedWidth = false;
     this.WindowResize();
   }
 
-  // 
+  // Set to reduced with if below minimum width.
   WindowResize()
   {
-    let width = window.innerWidth;  // Webpage with scrollbars
-    if (width < 800)
+    // Webpage width with scrollbars
+    let width = window.innerWidth;
+
+    let minimum = 800;
+    if (width < minimum)
     {
       this.reducedWidth = true;
-      this.menubar.style.display = "block";
-      this.menuIco.style.display = "block";
-      this.sidebar.style.display = "none";
-      this.sidebar.style.width = "240px";  // use widest string width?
-      this.content.style.width = "100%";
+
+      // Show the menu icon.
+      menubar.style.display = "block";
+      menuIco.style.display = "block";
+
+      // Hide the sidebar
+      sidebar.style.display = "none";
+      // ToDo: use widest string width?
+      sidebar.style.width = "240px";
+      content.style.width = "100%";
     }
     else
     {
       this.reducedWidth = false;
-      this.menubar.style.display = "none";
-      this.menuIco.style.display = "none";
-      this.sidebar.style.display = "inline-block";
-      this.sidebar.style.position = "relative";
-      this.sidebar.style.width = "25%";  // use widest string width?
-      this.content.style.width = "75%";
+
+      // Hide the menu icon.
+      menubar.style.display = "none";
+      menuIco.style.display = "none";
+      menuIco.style.display = "none";
+
+      // Show the sidebar
+      sidebar.style.display = "inline-block";
+      sidebar.style.position = "relative";
+      // ToDo: use widest string width?
+      sidebar.style.width = "25%";
+      content.style.width = "75%";
     }
   }
 
-  // 
+  // Click on the menu icon.
   MenuClick()
   {
-    if (this.sidebar.style.display == "none")
+    if (sidebar.style.display == "none")
     {
-      this.sidebar.style.display = "inline-block";
-      this.sidebar.style.position = "absolute";
+      // Show the sidebar.
+      sidebar.style.display = "inline-block";
+      sidebar.style.position = "absolute";
     }
     else
     {
-      this.sidebar.style.display = "none";
+      // Hide the sidebar.
+      sidebar.style.display = "none";
     }
   }
 
-  // 
+  // Hide the sidebar if at a reduced width.
   ContentMouseEnter()
   {
     if (this.reducedWidth == true)
     {
-      this.sidebar.style.display = "none";
+      sidebar.style.display = "none";
     }
   }
 
   // Document "click" handler method.
-  // event - The Target event.
+  // event - The Source Element event.
   DocumentClick(event)
   {
-    let srcElement = event.target;
-    if ("navLiveGroup" == srcElement.className
-      || "navItem" == srcElement.className)
+    let eSrc = event.target;
+
+    if ("DIV" == eSrc.tagName)
     {
-      let href = srcElement.dataset.href;
+      this.SidebarEvents(eSrc);
+    }
+
+    if ("A" == eSrc.tagName)
+    {
+      let highlight = "#d4dfff";
+      switch (eSrc.href)
+      {
+        case "HTML/1DeprecatedItems.html":
+          let items = eSrc.children;
+          links.forEach(link =>
+          {
+            link.backgroundColor = "";
+            if (link.href == "HTML/1DeprecatedItems.html")
+            {
+              link.backgroundColor = highlight;
+            }
+          });
+          break;
+      }
+    }
+  }
+
+  // Perform the sidebar events.
+  SidebarEvents(eSrc)
+  {
+    // Only perform sidebar action for these class selectors.
+    if ("navLiveGroup" == eSrc.className
+      || "navItem" == eSrc.className)
+    {
+      // Get the data-href value.
+      let href = eSrc.dataset.href;
       if (href)
       {
-        if (this.ContentFrame != null)
-        {
-          this.ContentMouseEnter();
-          this.ContentFrame.src = href;
-        }
+        this.ContentMouseEnter();
+        contentFrame.src = href;
       }
 
       if (this.PrevNavItem != null)
       {
+        // Resets to original value.
         this.PrevNavItem.style.backgroundColor = "";
       }
-      this.PrevNavItem = srcElement;
-      srcElement.style.backgroundColor = "#d4dfff";
+      this.PrevNavItem = eSrc;
+
+      let highlight = "#d4dfff";
+      eSrc.style.backgroundColor = highlight;
     }
   }
 }
