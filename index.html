@@ -81,24 +81,23 @@
     const navEvents = new NavEvents();
     navEvents.AddEvents();
 
-    //const iframe = document.getElementById("contentFrame");
-    //iframe.onload = function ()
-    //{
-    //  iframe.contentWindow.postMessage('Hello from the parent!', '*');
-    //};
     // Handle message from CSSMain.html.
     window.addEventListener('message', function (event)
     {
-      if (navEvents.PrevNavItem != null)
+      if (event.origin == window.origin)
       {
-        // Resets to original value.
-        navEvents.PrevNavItem.style.backgroundColor = "";
-      }
+        if (navEvents.PrevNavItem != null)
+        {
+          // Resets to original value.
+          navEvents.PrevNavItem.style.backgroundColor = "";
+        }
 
-      let eItem = document.getElementById(event.data)
-      navEvents.PrevNavItem = eItem;
-      let highlight = "#d4dfff";
-      eItem.style.backgroundColor = highlight;
+        // Get data from message.
+        let eItem = document.getElementById(event.data)
+        navEvents.PrevNavItem = eItem;
+        let highlight = "#d4dfff";
+        eItem.style.backgroundColor = highlight;
+      }
     });
   </script>
 </body>

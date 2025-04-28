@@ -101,10 +101,11 @@
     function DocumentClick(event)
     {
       eSrc = event.target;
-      eSrc.origin;
+
       // Send a message to index.html.
       let indexWindow = parent.parent;
-      indexWindow.postMessage(eSrc.id, "*");
+      let origin = window.origin;
+      indexWindow.postMessage(eSrc.id, origin);
     }
   </script>
 </body>
