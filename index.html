@@ -20,50 +20,50 @@
   <div id="sidebar">
     <br />
     <div class="navGroup">CSS</div>
-    <div class="navItem" data-href="CSSMain.html">
+    <div id="home" class="navItem" data-href="CSSMain.html">
       Home
     </div>
-    <div class="navItem"
+    <div id="deprecated" class="navItem"
          data-href="HTML\1DeprecatedItems.html">
       Deprecated Presentation Items
     </div>
-    <div class="navItem"
+    <div id="styleAttribute" class="navItem"
          data-href="HTML\2StyleAttribute.html">
       The Style Attribute
     </div>
-    <div class="navItem"
+    <div id="styleElement" class="navItem"
          data-href="HTML\3StyleElement.html">
       The Style Element
     </div>
-    <div class="navItem"
+    <div id="eSelector" class="navItem"
          data-href="HTML\4ElementSelector.html">
       The Element Selector
     </div>
-    <div class="navItem"
+    <div id="classSelector" class="navItem"
          data-href="HTML\5ClassSelector.html">
       The Class Selector
     </div>
-    <div class="navItem"
+    <div id="idSelector" class="navItem"
          data-href="HTML\6IDSelector.html">
       The ID Selector
     </div>
-    <div class="navItem"
+    <div id="external" class="navItem"
          data-href="HTML\7ExternalCSS.html">
       External CSS
     </div>
-    <div class="navItem"
+    <div id="showExt" class="navItem"
          data-href="HTML\8ShowExtCSS.html">
       View External CSS
     </div>
-    <div class="navItem"
+    <div id="block" class="navItem"
          data-href="HTML\9Block.html">
       Block Display Elements
     </div>
-    <div class="navItem"
+    <div id="inline" class="navItem"
          data-href="HTML\10Inline.html">
       Inline Display Elements
     </div>
-    <div class="navItem"
+    <div id="inlineBlock" class="navItem"
          data-href="HTML\11InlineBlock.html">
       Inline-Block Display Elements
     </div>
@@ -80,6 +80,26 @@
     localStorage.removeItem("isLocal");
     const navEvents = new NavEvents();
     navEvents.AddEvents();
+
+    //const iframe = document.getElementById("contentFrame");
+    //iframe.onload = function ()
+    //{
+    //  iframe.contentWindow.postMessage('Hello from the parent!', '*');
+    //};
+    // Handle message from CSSMain.html.
+    window.addEventListener('message', function (event)
+    {
+      if (navEvents.PrevNavItem != null)
+      {
+        // Resets to original value.
+        navEvents.PrevNavItem.style.backgroundColor = "";
+      }
+
+      let eItem = document.getElementById(event.data)
+      navEvents.PrevNavItem = eItem;
+      let highlight = "#d4dfff";
+      eItem.style.backgroundColor = highlight;
+    });
   </script>
 </body>
 </html>

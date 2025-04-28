@@ -13,37 +13,6 @@ class NavEvents
   // Adds the HTML event handlers.
   AddEvents()
   {
-    // Get frame document.
-    let frameDoc = null;
-    //let frameWindow = contentFrame.contentWindow;
-    //if (frameWindow.document)
-    //{
-    //  frameDoc = frameWindow.document;
-    //}
-    // - or -
-    //frameDoc = contentFrame.contentDocument
-    //  || contentFrame.contentWindow.document;
-    frameDoc = contentFrame.contentDocument
-    // Link Event Handlers
-    if (frameDoc != null)
-    {
-      let links = frameDoc.getElementsByTagName("A");
-      for (let linkIndex = 0; linkIndex < links.length; linkIndex++)
-      {
-        let eLink = children[linkIndex];
-        if ("A" == eLink.tagName)
-        {
-          eLink.addEventListener("click", this.DocumentClick.bind(this));
-        }
-      }
-    }
-    //const links = this.content.querySelectorAll('a');
-    //links.forEach(link =>
-    //{
-    //  link.addEventListener('click', this.DocumentClick.bind(this));
-    //});
-
-    // Other Event Handlers.
     window.addEventListener("resize", this.WindowResize.bind(this))
     document.addEventListener("click", this.DocumentClick.bind(this));
     menuIco.addEventListener("click", this.MenuClick.bind(this));
@@ -77,25 +46,6 @@ class NavEvents
     if ("DIV" == eSrc.tagName)
     {
       this.SidebarEvents(eSrc);
-    }
-
-    if ("A" == eSrc.tagName)
-    {
-      let highlight = "#d4dfff";
-      switch (eSrc.href)
-      {
-        case "HTML/1DeprecatedItems.html":
-          let items = eSrc.children;
-          links.forEach(link =>
-          {
-            link.backgroundColor = "";
-            if (link.href == "HTML/1DeprecatedItems.html")
-            {
-              link.backgroundColor = highlight;
-            }
-          });
-          break;
-      }
     }
   }
 
