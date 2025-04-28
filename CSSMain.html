@@ -76,6 +76,28 @@
     {
       ZNNHS.style.display = "none";
     }
+
+    //let links = document.getElementsByTagName("A");
+    //for (let linkIndex = 0; linkIndex < links.length; linkIndex++)
+    //{
+    //  let eLink = links[linkIndex];
+    //  if ("A" == eLink.tagName)
+    //  {
+    //    eLink.addEventListener("click", this.DocumentClick.bind(this));
+    //  }
+    //}
+    let links = document.querySelectorAll("a");
+    links.forEach(link =>
+    {
+      link.addEventListener("click", this.DocumentClick.bind(this));
+    });
+
+    function DocumentClick(event)
+    {
+      eSrc = event.target;
+      eSrc.origin;
+      eSrc.href;
+    }
   </script>
 </body>
 </html>

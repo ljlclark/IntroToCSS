@@ -15,23 +15,25 @@ class NavEvents
   {
     // Get frame document.
     let frameDoc = null;
-    let frameWindow = contentFrame.contentWindow;
-    if (frameWindow.document)
-    {
-      frameDoc = frameWindow.document;
-    }
-    frameDoc = contentFrame.contentDocument;
-
+    //let frameWindow = contentFrame.contentWindow;
+    //if (frameWindow.document)
+    //{
+    //  frameDoc = frameWindow.document;
+    //}
+    // - or -
+    //frameDoc = contentFrame.contentDocument
+    //  || contentFrame.contentWindow.document;
+    frameDoc = contentFrame.contentDocument
     // Link Event Handlers
     if (frameDoc != null)
     {
       let links = frameDoc.getElementsByTagName("A");
-      for (let index = 0; index < links.length; index++)
+      for (let linkIndex = 0; linkIndex < links.length; linkIndex++)
       {
-        let eChild = children[index];
-        if ("A" == eChild.tagName)
+        let eLink = children[linkIndex];
+        if ("A" == eLink.tagName)
         {
-          child.addEventListener("click", this.DocumentClick.bind(this));
+          eLink.addEventListener("click", this.DocumentClick.bind(this));
         }
       }
     }
@@ -47,66 +49,14 @@ class NavEvents
     menuIco.addEventListener("click", this.MenuClick.bind(this));
     content.addEventListener("mouseenter", this.ContentMouseEnter.bind(this));
 
+    // Get element properties.
+    this.menubar = document.getElementById("menubar");
+
     // Set defaults.
-    menubar.style.display = "none";
+    this.menubar.style.display = "none";
     menuIco.style.display = "none";
     this.reducedWidth = false;
     this.WindowResize();
-  }
-
-  // Set to reduced with if below minimum width.
-  WindowResize()
-  {
-    // Webpage width with scrollbars
-    let width = window.innerWidth;
-
-    let minimum = 800;
-    if (width < minimum)
-    {
-      this.reducedWidth = true;
-
-      // Show the menu icon.
-      menubar.style.display = "block";
-      menuIco.style.display = "block";
-
-      // Hide the sidebar
-      sidebar.style.display = "none";
-      // ToDo: use widest string width?
-      sidebar.style.width = "240px";
-      content.style.width = "100%";
-    }
-    else
-    {
-      this.reducedWidth = false;
-
-      // Hide the menu icon.
-      menubar.style.display = "none";
-      menuIco.style.display = "none";
-      menuIco.style.display = "none";
-
-      // Show the sidebar
-      sidebar.style.display = "inline-block";
-      sidebar.style.position = "relative";
-      // ToDo: use widest string width?
-      sidebar.style.width = "25%";
-      content.style.width = "75%";
-    }
-  }
-
-  // Click on the menu icon.
-  MenuClick()
-  {
-    if (sidebar.style.display == "none")
-    {
-      // Show the sidebar.
-      sidebar.style.display = "inline-block";
-      sidebar.style.position = "absolute";
-    }
-    else
-    {
-      // Hide the sidebar.
-      sidebar.style.display = "none";
-    }
   }
 
   // Hide the sidebar if at a reduced width.
@@ -149,6 +99,22 @@ class NavEvents
     }
   }
 
+  // Click on the menu icon.
+  MenuClick()
+  {
+    if (sidebar.style.display == "none")
+    {
+      // Show the sidebar.
+      sidebar.style.display = "inline-block";
+      sidebar.style.position = "absolute";
+    }
+    else
+    {
+      // Hide the sidebar.
+      sidebar.style.display = "none";
+    }
+  }
+
   // Perform the sidebar events.
   SidebarEvents(eSrc)
   {
@@ -173,6 +139,45 @@ class NavEvents
 
       let highlight = "#d4dfff";
       eSrc.style.backgroundColor = highlight;
+    }
+  }
+
+  // Set to reduced with if below minimum width.
+  WindowResize()
+  {
+    // Webpage width with scrollbars
+    let width = window.innerWidth;
+
+    let minimum = 800;
+    if (width < minimum)
+    {
+      this.reducedWidth = true;
+
+      // Show the menu icon.
+      this.menubar.style.display = "block";
+      menuIco.style.display = "block";
+
+      // Hide the sidebar
+      sidebar.style.display = "none";
+      // ToDo: use widest string width?
+      sidebar.style.width = "240px";
+      content.style.width = "100%";
+    }
+    else
+    {
+      this.reducedWidth = false;
+
+      // Hide the menu icon.
+      this.menubar.style.display = "none";
+      menuIco.style.display = "none";
+      menuIco.style.display = "none";
+
+      // Show the sidebar
+      sidebar.style.display = "inline-block";
+      sidebar.style.position = "relative";
+      // ToDo: use widest string width?
+      sidebar.style.width = "25%";
+      content.style.width = "75%";
     }
   }
 }
