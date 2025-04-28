@@ -86,8 +86,8 @@
     window.addEventListener("load", function (event)
     {
       // Send a message to index.html.
-      let parentWindow = parent.parent;
-      parentWindow.postMessage("home", "*");
+      let indexWindow = parent.parent;
+      indexWindow.postMessage("home", "*");
     });
 
     // Setup events for the link items.
@@ -103,8 +103,8 @@
       eSrc = event.target;
       eSrc.origin;
       // Send a message to index.html.
-      let parentWindow = parent.parent;
-      parentWindow.postMessage(eSrc.id, "*");
+      let indexWindow = parent.parent;
+      indexWindow.postMessage(eSrc.id, "*");
     }
   </script>
 </body>

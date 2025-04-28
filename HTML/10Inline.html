@@ -39,5 +39,13 @@
     <a href="11InlineBlock.html" class="button">InlineBlockElement -&gt;</a>
     <h6>10Inline</h6>
   </div>
+  <script>
+    window.addEventListener("load", function (event)
+    {
+      // Send a message to index.html.
+      let indexWindow = parent.parent;
+      indexWindow.postMessage("inline", "*");
+    });
+  </script>
 </body>
 </html>

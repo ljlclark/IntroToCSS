@@ -58,5 +58,13 @@
     <a href="4ElementSelector.html" class="button">ElementSelector -&gt;</a>
     <h6>3StyleElement</h6>
   </div>
+  <script>
+    window.addEventListener("load", function (event)
+    {
+      // Send a message to index.html.
+      let indexWindow = parent.parent;
+      indexWindow.postMessage("styleElement", "*");
+    });
+  </script>
 </body>
 </html>

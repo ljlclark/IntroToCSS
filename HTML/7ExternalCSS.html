@@ -54,5 +54,13 @@
     <a href="8ShowExtCSS.html" class="button">ViewCSS -&gt;</a>
     <h6>7ExternalCSS</h6>
   </div>
+  <script>
+    window.addEventListener("load", function (event)
+    {
+      // Send a message to index.html.
+      let indexWindow = parent.parent;
+      indexWindow.postMessage("external", "*");
+    });
+  </script>
 </body>
 </html>

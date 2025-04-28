@@ -52,5 +52,13 @@
     <a href="2StyleAttribute.html" class="button">StyleAttribute -&gt;</a>
     <h6>1DeprecatedItems</h6>
   </div>
+  <script>
+    window.addEventListener("load", function (event)
+    {
+      // Send a message to index.html.
+      let indexWindow = parent.parent;
+      indexWindow.postMessage("deprecated", "*");
+    });
+  </script>
 </body>
 </html>

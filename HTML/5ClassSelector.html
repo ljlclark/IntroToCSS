@@ -60,5 +60,13 @@
     <a href="6IDSelector.html" class="button">IDSelector -&gt;</a>
     <h6>5ClassSelector</h6>
   </div>
+  <script>
+    window.addEventListener("load", function (event)
+    {
+      // Send a message to index.html.
+      let indexWindow = parent.parent;
+      indexWindow.postMessage("classSelector", "*");
+    });
+  </script>
 </body>
 </html>
