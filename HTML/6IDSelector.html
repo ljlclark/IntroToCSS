@@ -65,7 +65,8 @@
     {
       // Send a message to index.html.
       let indexWindow = parent.parent;
-      indexWindow.postMessage("idSelector", "*");
+      let origin = GetOrigin(window.origin);
+      indexWindow.postMessage("idSelector", origin);
     });
   </script>
 </body>

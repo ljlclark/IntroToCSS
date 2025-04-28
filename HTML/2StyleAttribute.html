@@ -53,7 +53,8 @@
     {
       // Send a message to index.html.
       let indexWindow = parent.parent;
-      indexWindow.postMessage("styleAttribute", "*");
+      let origin = GetOrigin(window.origin);
+      indexWindow.postMessage("styleAttribute", origin);
     });
   </script>
 </body>

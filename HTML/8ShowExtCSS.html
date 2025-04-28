@@ -38,7 +38,8 @@
     {
       // Send a message to index.html.
       let indexWindow = parent.parent;
-      indexWindow.postMessage("showExt", "*");
+      let origin = GetOrigin(window.origin);
+      indexWindow.postMessage("showExt", origin);
     });
   </script>
 </body>

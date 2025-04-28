@@ -42,7 +42,8 @@
     {
       // Send a message to index.html.
       let indexWindow = parent.parent;
-      indexWindow.postMessage("block", "*");
+      let origin = GetOrigin(window.origin);
+      indexWindow.postMessage("block", origin);
     });
   </script>
 </body>

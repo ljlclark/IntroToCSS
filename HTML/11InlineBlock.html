@@ -44,7 +44,8 @@
     {
       // Send a message to index.html.
       let indexWindow = parent.parent;
-      indexWindow.postMessage("inlineBlock", "*");
+      let origin = GetOrigin(window.origin);
+      indexWindow.postMessage("inlineBlock", origin);
     });
   </script>
 </body>

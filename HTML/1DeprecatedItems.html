@@ -57,7 +57,8 @@
     {
       // Send a message to index.html.
       let indexWindow = parent.parent;
-      indexWindow.postMessage("deprecated", "*");
+      let origin = GetOrigin(window.origin);
+      indexWindow.postMessage("deprecated", origin);
     });
   </script>
 </body>

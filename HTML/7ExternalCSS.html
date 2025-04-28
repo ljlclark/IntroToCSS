@@ -59,7 +59,8 @@
     {
       // Send a message to index.html.
       let indexWindow = parent.parent;
-      indexWindow.postMessage("external", "*");
+      let origin = GetOrigin(window.origin);
+      indexWindow.postMessage("external", origin);
     });
   </script>
 </body>
