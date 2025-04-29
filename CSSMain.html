@@ -23,12 +23,6 @@
       }
       parent.parent.location.href = url;
     }
-
-    window.addEventListener("message", function (event)
-    {
-      alert(event.data)
-      event.source.postMessage("Back to you.", "*");
-    });
   </script>
 </head>
 <body>
@@ -36,20 +30,20 @@
     <div class="hMenu">
       <!-- The Main (Top) Module Menu -->
       <span class="hItem"
-            onclick="HREF('https://ljlclark.github.io/IntroToHTML/'
-              , '../IntroToHTML/indexLocal.html')">
+            onclick="HREF('../IntroToHTML/index.html'
+              , '../IntroToHTML/WebSite/indexLocal.html')">
         HTML
       </span>
       <span class="hItem" style="background-color: #d4dfff">
         CSS
       </span>
       <span class="hItem"
-            onclick="HREF('https://ljlclark.github.io/IntroToJavascript/'
+            onclick="HREF('../IntroToJavascript/index.html'
               , '../IntroToJavascript/indexLocal.html')">
         JavaScript
       </span>
       <span class="hItem"
-            onclick="HREF('https://ljlclark.github.io/IntroToPHP/'
+            onclick="HREF('../IntroToPHP/index.html'
               , '../IntroToPHP/indexLocal.html')">
         PHP
       </span>
